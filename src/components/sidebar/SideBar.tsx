@@ -18,7 +18,7 @@ const SideBar: React.FC = () => {
     // Array of side bar menues with multiple objects
     const menus = [
         { name: "My day", link:"/" , icon: MdOutlineWbSunny  },
-        { name: "Important",link:"/",  icon: FaRegStar },
+        { name: "Important",link:"/important",  icon: FaRegStar },
         { name: "Tasks", link:"/" , icon: IoHomeOutline  },
     ]  
 

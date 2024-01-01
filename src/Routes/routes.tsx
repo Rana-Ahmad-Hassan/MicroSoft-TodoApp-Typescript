@@ -3,6 +3,7 @@ import Navbar from "../components/navbar/Navbar"
 import SearchBar from "../components/searchBar/SearchBar"
 import SideBar from "../components/sidebar/SideBar"
 import Home from "../pages/Home/home"
+import ImportantTodo from "../pages/Important/importantTodo"
 
 
 const Routes:React.FC = () => {
@@ -20,9 +21,8 @@ const Routes:React.FC = () => {
 
        <div className="col-span-10 mt-7">
        <ReactRoutes>
-            <Route path="/" element={<Home/>}>
-
-            </Route>
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/important" element={<ImportantTodo/>}></Route>
        </ReactRoutes>
        </div>
       </div>
