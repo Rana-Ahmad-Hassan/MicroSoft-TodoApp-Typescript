@@ -3,11 +3,13 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 interface todo{
     data:string[]
     fav:string[]
+    searchQuery:string,
 }
 
 const initialState:todo={
     data:[],
-    fav:[]
+    fav:[],
+    searchQuery:""
 }
 
 export const todoSlice=createSlice({
@@ -20,10 +22,13 @@ export const todoSlice=createSlice({
         },
         addFavTodo:(state,action:PayloadAction<string>)=>{
              state.fav.push(action.payload)
+        },
+        handleSearch:(state,action:PayloadAction<string>)=>{
+            state.searchQuery=action.payload
         }
     }
 })
 
-export const { addTodo,addFavTodo } = todoSlice.actions
+export const { addTodo,addFavTodo,handleSearch } = todoSlice.actions
 
 export default todoSlice.reducer

@@ -3,11 +3,17 @@ import { FaRegCircle } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo,addFavTodo } from "../../features/todoSlice";
+import { addTodo, addFavTodo } from "../../features/todoSlice";
 
 interface statedata {
-    todo:{
+    todo: {
         data: string[]
+    }
+}
+
+interface searchQuery {
+    todo: {
+        searchQuery: string
     }
 }
 
@@ -19,15 +25,21 @@ const MainHome: React.FC = () => {
     const [todo, setTodo] = useState("")
     const dispatch = useDispatch()
     const data = useSelector((state: statedata) => state.todo.data)
+    const searchQuery = useSelector((state: searchQuery) => state.todo.searchQuery)
+    console.log(searchQuery)
+
+    const filterData = data.filter((item) => item.toUpperCase().includes(searchQuery.toUpperCase()))
+
+    console.log(filterData)
 
     const handleAddTodo = (e: FormEvent) => {
         e.preventDefault();
         dispatch(addTodo(todo))
     }
-   
 
-    const handleFavourite=(item:string)=>{
-         dispatch(addFavTodo(item))
+
+    const handleFavourite = (item: string) => {
+        dispatch(addFavTodo(item))
     }
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -70,7 +82,7 @@ const MainHome: React.FC = () => {
                         return (
                             <div className="bg-sky-100 my-5 flex justify-between text-stone-700 shadow-lg p-4 ">
                                 <p>{item}</p>
-                                <FaRegStar onClick={()=>handleFavourite(item)} size={20} className="cursor-pointer  text-blue-600  active:text-orange-400" />
+                                <FaRegStar onClick={() => handleFavourite(item)} size={20} className="cursor-pointer  text-blue-600  active:text-orange-400" />
                             </div>
                         )
                     })}

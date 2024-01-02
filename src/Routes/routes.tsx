@@ -6,12 +6,14 @@ import Home from "../pages/Home/home"
 import ImportantTodo from "../pages/Important/importantTodo"
 
 
+
 const Routes:React.FC = () => {
+  
   return (
     <>
     <BrowserRouter>
     <Navbar/>
-    <SearchBar/>
+    <SearchBar />
     
       <div className="grid grid-cols-12">
        <div className="
