@@ -39,7 +39,7 @@ const MainHome: React.FC = () => {
         dispatch(addTodo(todo))
     }
 
-
+    // here i am defining the function for adding the item for favourite in the global state in our feature folder
     const handleFavourite = (item: string) => {
         dispatch(addFavTodo(item))
     }
@@ -58,6 +58,8 @@ const MainHome: React.FC = () => {
 
     return (
         <>
+
+           {/* This is the main wrrapper div for this whole component */}
             <div className="2xl:mx-5">
                 <div className="">
                     <p className="text-2xl  flex gap-3 items-center flex-wrap"><MdOutlineWbSunny /> My Day </p>
