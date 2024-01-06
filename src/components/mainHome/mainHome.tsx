@@ -61,12 +61,15 @@ const MainHome: React.FC = () => {
 
            {/* This is the main wrrapper div for this whole component */}
             <div className="2xl:mx-5">
+
+                {/* this is the main content for the main home page */}
                 <div className="">
                     <p className="text-2xl  flex gap-3 items-center flex-wrap"><MdOutlineWbSunny /> My Day </p>
+                    {/* Here i can just display the currentday date and year */}
                     <p className="font-thin">{day} - {month} - {date}</p>
                 </div>
 
-
+               {/* this is the div for the input element and a icon */}
                 <div>
 
                     <div className="bg-gray-100 mt-4  rounded border border-gray-200 px-2 flex items-center ">
@@ -75,6 +78,8 @@ const MainHome: React.FC = () => {
                     </div>
                 </div>
 
+
+                {/* This is the div for the button for adding the todo */}
                 <div className="bg-white shadow-lg flex justify-end">
                     <button onClick={handleAddTodo} className="px-5  bg-white hover:bg-gray-100 hover:rounded-lg py-2 border my-2 mx-1">Add</button>
                 </div>
