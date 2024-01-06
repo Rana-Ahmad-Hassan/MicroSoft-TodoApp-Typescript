@@ -32,6 +32,8 @@ const MainHome: React.FC = () => {
 
     console.log(filterData)
 
+
+    // define the fuction here to just add todo to the global state in our freature component
     const handleAddTodo = (e: FormEvent) => {
         e.preventDefault();
         dispatch(addTodo(todo))
@@ -41,6 +43,8 @@ const MainHome: React.FC = () => {
     const handleFavourite = (item: string) => {
         dispatch(addFavTodo(item))
     }
+
+    // here i define the array of days and months for getting them as original days and month
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
