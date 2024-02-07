@@ -18,7 +18,8 @@
     "react-router": "^6.21.1",
     "react-router-dom": "^6.21.1",
     "react-uuid": "^2.0.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "uuid-ts": "^0.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

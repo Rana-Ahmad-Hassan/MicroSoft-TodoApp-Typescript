@@ -4,33 +4,40 @@ import SearchBar from "../components/searchBar/SearchBar"
 import SideBar from "../components/sidebar/SideBar"
 import Home from "../pages/Home/home"
 import ImportantTodo from "../pages/Important/importantTodo"
+import SignInPage from "../pages/signInPage/signInPage"
+import PrivateRoutes from "./privateRoutes"
 
 
 
-const Routes:React.FC = () => {
-  
+const Routes: React.FC = () => {
+
   return (
     <>
-    <BrowserRouter>
-    <Navbar/>
-    <SearchBar />
-    
-      <div className="grid grid-cols-12">
-       <div className="
+      <BrowserRouter>
+        <Navbar />
+        <SearchBar />
+
+        <div className="grid grid-cols-12">
+          <div className="
        col-span-2">
-         <SideBar/>
-       </div>
+            <SideBar />
+          </div>
 
-       <div className="col-span-10 mt-7">
-       <ReactRoutes>
-            <Route path="/" element={<Home/>}></Route>
-            <Route path="/important" element={<ImportantTodo/>}></Route>
-       </ReactRoutes>
-       </div>
-      </div>
-    
+          <div className="col-span-10 mt-7">
+            <ReactRoutes>
+              <Route path="/" element={<Home />}></Route>
 
-    </BrowserRouter>
+              <Route path="/signIn" element={<SignInPage />}></Route>
+
+              <Route element={<PrivateRoutes />}>
+                <Route path="/important" element={<ImportantTodo />}></Route>
+              </Route>
+            </ReactRoutes>
+          </div>
+        </div>
+
+
+      </BrowserRouter>
     </>
   )
 }
