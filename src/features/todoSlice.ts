@@ -25,6 +25,10 @@ export const todoSlice=createSlice({
         },
         handleSearch:(state,action:PayloadAction<string>)=>{
             state.searchQuery=action.payload
+            const filterData=state.data.filter((item)=>item.includes(state.searchQuery))
+            if(filterData){
+                state.data = filterData
+            }
         }
     }
 })

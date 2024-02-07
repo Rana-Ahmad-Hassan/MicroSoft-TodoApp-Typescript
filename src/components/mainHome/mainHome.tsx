@@ -25,12 +25,9 @@ const MainHome: React.FC = () => {
     const [todo, setTodo] = useState("")
     const dispatch = useDispatch()
     const data = useSelector((state: statedata) => state.todo.data)
-    const searchQuery = useSelector((state: searchQuery) => state.todo.searchQuery)
-    console.log(searchQuery)
+    
 
-    const filterData = data.filter((item) => item.toUpperCase().includes(searchQuery.toUpperCase()))
-
-    console.log(filterData)
+   
 
 
     // define the fuction here to just add todo to the global state in our freature component

@@ -11,7 +11,7 @@ const SearchBar: React.FC = () => {
         const handleSearchText=(e:FormEvent)=>{
           e.preventDefault()
           dispatch(handleSearch(searchValue))
-          
+          setSearchValue("")
         }
 
     return (
@@ -29,7 +29,7 @@ const SearchBar: React.FC = () => {
                         type="text"
                         id="search"
                         onChange={(e)=>setSearchValue(e.target.value)}
-                        placeholder="Search something.." />
+                        placeholder="Search something..." />
                 </div>
             </div>
         </>
