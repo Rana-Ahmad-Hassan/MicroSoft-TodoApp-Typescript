@@ -85,13 +85,13 @@ const MainHome: React.FC = () => {
                 <div className="mt-10">
 
 
-                    {data.map((item) => {
+                    {data.map((item, i) => {
                         return (
-                            <div className="bg-sky-100 my-5 flex justify-between text-stone-700 shadow-lg p-4 ">
+                            <div className="bg-sky-100 my-5 flex justify-between text-stone-700 shadow-lg p-4 " key={i}>
                                 <p>{item}</p>
-                             
-                                    <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar? <GoStarFill/> : "text-blue-600"}   `} />
-                              
+
+                                <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar ? <GoStarFill /> : "text-blue-600"}   `} />
+
                             </div>
                         )
                     })}
