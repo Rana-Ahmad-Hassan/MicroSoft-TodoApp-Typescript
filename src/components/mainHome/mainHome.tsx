@@ -1,6 +1,7 @@
 import { MdOutlineWbSunny } from "react-icons/md";
 import { FaRegCircle } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
+import { GoStarFill } from "react-icons/go";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, addFavTodo } from "../../features/todoSlice";
@@ -11,11 +12,7 @@ interface statedata {
     }
 }
 
-interface searchQuery {
-    todo: {
-        searchQuery: string
-    }
-}
+
 
 
 
@@ -23,11 +20,12 @@ interface searchQuery {
 const MainHome: React.FC = () => {
 
     const [todo, setTodo] = useState("")
+    const [favStar, setFavStar] = useState(false)
     const dispatch = useDispatch()
     const data = useSelector((state: statedata) => state.todo.data)
-    
 
-   
+
+
 
 
     // define the fuction here to just add todo to the global state in our freature component
@@ -39,6 +37,7 @@ const MainHome: React.FC = () => {
     // here i am defining the function for adding the item for favourite in the global state in our feature folder
     const handleFavourite = (item: string) => {
         dispatch(addFavTodo(item))
+        setFavStar(true)
     }
 
     // here i define the array of days and months for getting them as original days and month
@@ -56,7 +55,7 @@ const MainHome: React.FC = () => {
     return (
         <>
 
-           {/* This is the main wrrapper div for this whole component */}
+            {/* This is the main wrrapper div for this whole component */}
             <div className="2xl:mx-5">
 
                 {/* this is the main content for the main home page */}
@@ -66,7 +65,7 @@ const MainHome: React.FC = () => {
                     <p className="font-thin">{day} - {month} - {date}</p>
                 </div>
 
-               {/* this is the div for the input element and a icon */}
+                {/* this is the div for the input element and a icon */}
                 <div>
 
                     <div className="bg-gray-100 mt-4  rounded border border-gray-200 px-2 flex items-center ">
@@ -90,7 +89,9 @@ const MainHome: React.FC = () => {
                         return (
                             <div className="bg-sky-100 my-5 flex justify-between text-stone-700 shadow-lg p-4 ">
                                 <p>{item}</p>
-                                <FaRegStar onClick={() => handleFavourite(item)} size={20} className="cursor-pointer  text-blue-600  active:text-orange-400" />
+                             
+                                    <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar? <GoStarFill/> : "text-blue-600"}   `} />
+                              
                             </div>
                         )
                     })}
