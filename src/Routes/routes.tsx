@@ -25,13 +25,17 @@ const Routes: React.FC = () => {
 
           <div className="col-span-10 mt-7">
             <ReactRoutes>
-              <Route path="/" element={<Home />}></Route>
 
               <Route path="/signIn" element={<SignInPage />}></Route>
 
+
+
               <Route element={<PrivateRoutes />}>
                 <Route path="/important" element={<ImportantTodo />}></Route>
+                <Route path="/" element={<Home />}></Route>
               </Route>
+
+              
             </ReactRoutes>
           </div>
         </div>

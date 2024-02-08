@@ -39,10 +39,13 @@ export const todoSlice = createSlice({
             const deleteItem= action.payload;
             const newData = state.data.filter((item)=>item!==deleteItem)
             state.data= newData;
+        },
+        handleLogOut:(state)=>{
+            state.login= false;
         }
     }
 })
 
-export const { addTodo, addFavTodo, handleSearch,handleLogin, handledelete } = todoSlice.actions
+export const { addTodo, addFavTodo, handleSearch,handleLogin, handledelete, handleLogOut } = todoSlice.actions
 
 export default todoSlice.reducer

@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { IoMdPerson } from "react-icons/io";
-
+import { handleLogOut } from '../../features/todoSlice';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 interface statedata {
     todo: {
@@ -12,7 +14,7 @@ interface statedata {
 
 
 const Navbar: React.FC = () => {
-
+    const dispatch = useDispatch()
     const login = useSelector((state: statedata) => state.todo.login)
     useEffect(() => {
         const handleMenu = () => {
@@ -69,6 +71,21 @@ const Navbar: React.FC = () => {
             }
         };
     }, []);
+
+    const handleDeleteUser= ()=>{
+     
+        dispatch(handleLogOut())
+        toast.error("User delete successfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        
+     })
+    }
 
 
 
@@ -129,12 +146,11 @@ const Navbar: React.FC = () => {
                 {
                     login ?
 
-                     
-                            <div className='ml-auto flex flex-col items-center'>
-                                <IoMdPerson size={25} className="  hover:cursor-pointer  " />
-                                
-                            </div>
-                       
+
+                        <div className='ml-auto flex flex-col items-center'>
+                            <button onClick={handleDeleteUser} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200">LogOut</button>
+                        </div>
+
 
 
 
