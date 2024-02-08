@@ -29,6 +29,12 @@ const Navbar: React.FC = () => {
     const handleCloseSettings = () => {
         setSettings(false)
     }
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleChange = () => {
+        setIsChecked(!isChecked);
+    };
     useEffect(() => {
         const handleMenu = () => {
             const menu = document.querySelectorAll('.navbar-menu');
@@ -118,44 +124,7 @@ const Navbar: React.FC = () => {
                 </div>
 
 
-                <ul className="hidden absolute top-1/2 le<RxCross1 size={20}/>ft-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
 
-
-
-                    <li><a className="text-sm text-white " href="#">Home</a></li>
-                    <li className="text-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                        </svg>
-                    </li>
-
-
-                    <li><a className="text-sm text-white " href="#">About Us</a></li>
-                    <li className="text-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                        </svg>
-                    </li>
-
-
-                    <li><a className="text-sm text-white" href="#">Services</a></li>
-                    <li className="text-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                        </svg>
-                    </li>
-
-
-                    <li><a className="text-sm text-white" href="#">Pricing</a></li>
-                    <li className="text-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                        </svg>
-                    </li>
-
-
-                    <li><a className="text-sm text-white" href="#">Contact</a></li>
-                </ul>
                 {
                     login ?
 
@@ -185,25 +154,7 @@ const Navbar: React.FC = () => {
                             </svg>
                         </button>
                     </div>
-                    <div>
-                        <ul>
-                            <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
-                            </li>
-                            <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
-                            </li>
-                            <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
-                            </li>
-                            <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
-                            </li>
-                            <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
+
                     <div className="mt-auto">
                         <div className="pt-6">
                             {
@@ -219,12 +170,25 @@ const Navbar: React.FC = () => {
             </div>
 
             {
-                settings ? <div className='fixed  right-0 z-50'>
-                    <div className='h-screen bg-blue-400 py-10 px-5 w-80'>
+                settings ? <div className='fixed top-24 pt-2 right-0 z-50 shadow-2xl'>
+                    <div className='h-screen bg-white py-10 px-5 w-96'>
                         <div className='flex flex-col items-end'>
-                            <RxCross1 size={20} onClick={handleCloseSettings} className="text-white hover:cursor-pointer" />
+                            <RxCross1 size={20} onClick={handleCloseSettings} className="text-black hover:cursor-pointer" />
                         </div>
-                        <button>Dark Mode</button>
+                        <div className='flex justify-between mt-10'>
+                            <p className='  text-lg'>DARK MODE</p>
+                            <label className="relative inline-flex items-center me-5 cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    className="sr-only peer"
+                                    checked={isChecked}
+                                    onChange={handleChange}
+                                />
+                                <div className="w-11 h-6 bg-gray-200 rounded-full peer-focus:ring-4   dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  "></div>
+
+
+                            </label>
+                        </div>
                     </div>
                 </div> : ""
             }

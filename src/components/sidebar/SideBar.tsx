@@ -12,14 +12,22 @@ import { Link } from "react-router-dom";
 // Import Link from React Router Dom
 import { useSelector } from "react-redux";
 
+
 interface statedata {
     todo: {
         login: Boolean
     }
 }
 
+interface Favtodo {
+    todo: {
+        fav: string[]
+    }
+}
+
 const SideBar: React.FC = () => {
     const login = useSelector((state: statedata) => state.todo.login)
+    const impTodo = useSelector((state: Favtodo) => state.todo.fav)
 
     // Array of side bar menues with multiple objects
     const menus = [
@@ -90,6 +98,7 @@ const SideBar: React.FC = () => {
                             {open && (
                                 <div className="text-black">{React.createElement(menu?.icon, { size: "25" })}</div>
                             )}
+
                             <h2
                                 className={`transition-all text-1xl font-normal duration-500 whitespace-pre ${!open && "opacity-0 translate-x-28 overflow-hidden"
                                     }`}
@@ -99,8 +108,12 @@ const SideBar: React.FC = () => {
                                 }}
                             >
                                 {menu?.name}
+                                {menu.name === "Important" ? <p>{impTodo.length}</p> : ""}
                             </h2>
+
+
                         </Link>
+
                     ))}
                 </div>
                 {/* This is the end of the sideBar navigation links div */}
