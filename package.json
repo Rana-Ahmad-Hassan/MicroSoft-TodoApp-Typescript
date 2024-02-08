@@ -17,6 +17,7 @@
     "react-redux": "^9.0.4",
     "react-router": "^6.21.1",
     "react-router-dom": "^6.21.1",
+    "react-toastify": "^10.0.4",
     "react-uuid": "^2.0.0",
     "uuid": "^9.0.1",
     "uuid-ts": "^0.1.0"

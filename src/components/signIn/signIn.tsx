@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { handleLogin } from '../../features/todoSlice';
+import { toast } from 'react-toastify';
 
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -16,6 +17,15 @@ const SignIn: React.FC = () => {
         localStorage.setItem('name', name);
 
         dispatch(handleLogin())
+        toast.success("User Created successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
     };
 
     return (

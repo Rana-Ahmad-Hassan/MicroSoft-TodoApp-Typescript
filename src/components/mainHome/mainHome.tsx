@@ -6,6 +6,8 @@ import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, addFavTodo, handledelete } from "../../features/todoSlice";
 import { MdDelete } from "react-icons/md";
+import { toast } from 'react-toastify';
+
 
 
 interface statedata {
@@ -44,6 +46,15 @@ const MainHome: React.FC = () => {
 
     const handleDelete = (item:string)=>{
         dispatch(handledelete(item))
+        toast.success("Todo deleted successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
     }
 
     // here i define the array of days and months for getting them as original days and month
@@ -93,8 +104,8 @@ const MainHome: React.FC = () => {
 
                     {data.map((item, i) => {
                         return (
-                            <div className="bg-sky-100 my-5 flex justify-between text-stone-700 shadow-lg p-4 " key={i}>
-                                <p>{item}</p>
+                            <div className="bg-sky-100 my-5 flex flex-wrap justify-between text-stone-700 shadow-lg p-4 " key={i}>
+                                <p className="flex flex-wrap">{item}</p>
 
                                 <div className="ml-auto flex flex-row items-center gap-2">
                                 <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar ? <GoStarFill /> : "text-blue-600"}   `} />
