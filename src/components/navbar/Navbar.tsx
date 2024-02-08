@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
     }, []);
 
     const handleDeleteUser= ()=>{
-     
+        alert("Are you really want to logout")
         dispatch(handleLogOut())
         toast.error("User delete successfully!", {
           position: "top-right",

@@ -35,7 +35,7 @@ const Routes: React.FC = () => {
                 <Route path="/" element={<Home />}></Route>
               </Route>
 
-              
+
             </ReactRoutes>
           </div>
         </div>
