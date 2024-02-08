@@ -6,11 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 
-
-
-
-
-
 function App() {
   const [loading, setLoading] = useState(true)
 
@@ -24,8 +19,13 @@ function App() {
     <>
 
       {
-        loading ? <div className='h-screen bg-black flex flex-col items-center justify-center'><ImSpinner9 size={35} className="animate-spin text-white mb-4" />
-          <p className='text-white text-3xl'>MicroSoft TODO</p></div> : <Routes />
+        loading ? <div className='h-screen bg-blue-700 flex flex-col items-center justify-center'><ImSpinner9 size={35} className="animate-spin text-white mb-4" />
+          <div className='flex items-center'>
+            <img src="https://www.freepnglogos.com/uploads/microsoft-window-logo-emblem-0.png" className='w-20' alt="" />
+            <p className='text-white text-3xl'>MicroSoft TODO</p>
+          </div>
+
+        </div> : <Routes />
       }
 
       <ToastContainer />

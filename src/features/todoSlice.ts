@@ -32,6 +32,8 @@ export const todoSlice = createSlice({
             const filterData = state.data.filter((item) => item.includes(state.searchQuery))
             if (filterData) {
                 state.data = filterData
+            }else{
+                alert("Particular todo does not exist")
             }
         },
         handleLogin: (state) => {

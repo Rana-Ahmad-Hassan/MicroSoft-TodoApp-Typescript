@@ -13,7 +13,7 @@ import { RxCross1 } from "react-icons/rx";
 interface statedata {
     todo: {
         login: Boolean,
-        toggleTheme:Boolean
+        toggleTheme: Boolean
 
     }
 }
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
     const [settings, setSettings] = useState(false)
     const dispatch = useDispatch()
     const login = useSelector((state: statedata) => state.todo.login)
-    const toggleTheme = useSelector((state:statedata)=>state.todo.toggleTheme)
+    const toggleTheme = useSelector((state: statedata) => state.todo.toggleTheme)
 
 
     const handleSettings = () => {
@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         setIsChecked(!isChecked);
     };
 
-    const handleToogleDarkMode = () =>{
+    const handleToogleDarkMode = () => {
         dispatch(handleToggleTheme())
     }
     useEffect(() => {
@@ -100,6 +100,7 @@ const Navbar: React.FC = () => {
     }, []);
 
     const handleDeleteUser = () => {
+
         alert("Are you really want to logout")
         dispatch(handleLogOut())
         toast.error("User delete successfully!", {
@@ -112,6 +113,8 @@ const Navbar: React.FC = () => {
             progress: undefined,
 
         })
+
+
     }
 
 
