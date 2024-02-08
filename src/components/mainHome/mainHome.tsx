@@ -4,7 +4,9 @@ import { FaRegStar } from "react-icons/fa";
 import { GoStarFill } from "react-icons/go";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, addFavTodo } from "../../features/todoSlice";
+import { addTodo, addFavTodo, handledelete } from "../../features/todoSlice";
+import { MdDelete } from "react-icons/md";
+
 
 interface statedata {
     todo: {
@@ -37,6 +39,11 @@ const MainHome: React.FC = () => {
     const handleFavourite = (item: string) => {
         dispatch(addFavTodo(item))
         setFavStar(true)
+    }
+
+
+    const handleDelete = (item:string)=>{
+        dispatch(handledelete(item))
     }
 
     // here i define the array of days and months for getting them as original days and month
@@ -89,8 +96,10 @@ const MainHome: React.FC = () => {
                             <div className="bg-sky-100 my-5 flex justify-between text-stone-700 shadow-lg p-4 " key={i}>
                                 <p>{item}</p>
 
+                                <div className="ml-auto flex flex-row items-center gap-2">
                                 <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar ? <GoStarFill /> : "text-blue-600"}   `} />
-
+                                <MdDelete size={20} onClick={()=>handleDelete(item)} className="text-red-500 hover:cursor-pointer"/>
+                                </div>
                             </div>
                         )
                     })}

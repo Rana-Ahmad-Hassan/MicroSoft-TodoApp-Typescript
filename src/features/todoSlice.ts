@@ -34,10 +34,15 @@ export const todoSlice = createSlice({
         },
         handleLogin: (state) => {
             state.login = true
+        },
+        handledelete:(state,action: PayloadAction<string>)=>{
+            const deleteItem= action.payload;
+            const newData = state.data.filter((item)=>item!==deleteItem)
+            state.data= newData;
         }
     }
 })
 
-export const { addTodo, addFavTodo, handleSearch,handleLogin } = todoSlice.actions
+export const { addTodo, addFavTodo, handleSearch,handleLogin, handledelete } = todoSlice.actions
 
 export default todoSlice.reducer
