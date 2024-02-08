@@ -5,13 +5,17 @@ import { handleLogin } from '../../features/todoSlice';
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name , setName] = useState("")
     const dispatch = useDispatch()
 
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userPassword', password);
+        localStorage.setItem('name', name);
+
         dispatch(handleLogin())
-        console.log(email, password);
     };
 
     return (
@@ -24,6 +28,19 @@ const SignIn: React.FC = () => {
                             Sign in to your account
                         </h1>
                         <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+                        <div>
+                                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Name............."
+                                    required
+                                    value={name}
+                                    onChange={e => setName(e.target.value)}
+                                />
+                            </div>
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                                 <input
@@ -67,9 +84,9 @@ const SignIn: React.FC = () => {
                                 </div>
 
                             </div>
-                            <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                            <button type="submit" className="w-full  bg-white text-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Don’t have an account yet? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                                Don’t have an account yet? <a href="#" className="font-medium text-primary-600 hover:underline  dark:text-primary-500">Sign up</a>
                             </p>
                         </form>
                     </div>

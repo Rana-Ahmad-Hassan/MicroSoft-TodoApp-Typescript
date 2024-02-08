@@ -1,12 +1,19 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { IoMdPerson } from "react-icons/io";
 
 
+interface statedata {
+    todo: {
+        login: Boolean
+    }
+}
 
 
 const Navbar: React.FC = () => {
-    
 
+    const login = useSelector((state: statedata) => state.todo.login)
     useEffect(() => {
         const handleMenu = () => {
             const menu = document.querySelectorAll('.navbar-menu');
@@ -63,7 +70,7 @@ const Navbar: React.FC = () => {
         };
     }, []);
 
-    
+
 
     return (
         <body className="bg-blue-500">
@@ -119,7 +126,20 @@ const Navbar: React.FC = () => {
 
                     <li><a className="text-sm text-white" href="#">Contact</a></li>
                 </ul>
-                <a className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
+                {
+                    login ?
+
+                     
+                            <div className='ml-auto flex flex-col items-center'>
+                                <IoMdPerson size={25} className="  hover:cursor-pointer  " />
+                                
+                            </div>
+                       
+
+
+
+                        : <NavLink to={"/signIn"} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200">Sign In</NavLink>
+                }
                 <a className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
             </nav>
             <div className="navbar-menu relative z-50 hidden">
@@ -127,7 +147,7 @@ const Navbar: React.FC = () => {
                 <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
                     <div className="flex items-center mb-8">
                         <a className="mr-auto text-3xl font-bold leading-none" href="#">
-                        <p className='font-medium text-[1.3vw]'>To Do</p>
+                            <p className='font-medium text-[1.3vw]'>To Do</p>
                         </a>
                         <button className="navbar-close">
                             <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -156,7 +176,9 @@ const Navbar: React.FC = () => {
                     </div>
                     <div className="mt-auto">
                         <div className="pt-6">
-                            <NavLink to={"/signIn"} className="block px-4 py-3 mb-3  text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl">Sign in</NavLink>
+                            {
+                                login ? <IoMdPerson size={25} /> : <NavLink to={"/signIn"} className="block px-4 py-3 mb-3  text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl">Sign in</NavLink>
+                            }
                             <a className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
                         </div>
                         <p className="my-4 text-xs text-center text-gray-400">

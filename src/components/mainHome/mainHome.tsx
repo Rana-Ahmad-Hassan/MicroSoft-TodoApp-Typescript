@@ -5,7 +5,6 @@ import { GoStarFill } from "react-icons/go";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, addFavTodo } from "../../features/todoSlice";
-import {v4} from "uuid-ts"
 
 interface statedata {
     todo: {
