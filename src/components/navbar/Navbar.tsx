@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { IoMdPerson } from "react-icons/io";
 import { handleLogOut } from '../../features/todoSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { IoSettings } from 'react-icons/io5';
+import { RxCross1 } from "react-icons/rx";
+
 
 interface statedata {
     todo: {
@@ -14,8 +17,18 @@ interface statedata {
 
 
 const Navbar: React.FC = () => {
+    const [settings, setSettings] = useState(false)
     const dispatch = useDispatch()
     const login = useSelector((state: statedata) => state.todo.login)
+
+
+    const handleSettings = () => {
+        setSettings(true)
+    }
+
+    const handleCloseSettings = () => {
+        setSettings(false)
+    }
     useEffect(() => {
         const handleMenu = () => {
             const menu = document.querySelectorAll('.navbar-menu');
@@ -72,25 +85,25 @@ const Navbar: React.FC = () => {
         };
     }, []);
 
-    const handleDeleteUser= ()=>{
+    const handleDeleteUser = () => {
         alert("Are you really want to logout")
         dispatch(handleLogOut())
         toast.error("User delete successfully!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        
-     })
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+
+        })
     }
 
 
 
     return (
-        <body className="bg-blue-500">
+        <body className="bg-blue-500 relative z-40">
             <nav className="relative px-10 py-2 flex justify-between items-center bg-blue-600 ">
                 <a className="text-3xl font-bold leading-none" href="#">
                     <p className='font-medium text-white text-[30px]'>To Do</p>
@@ -105,7 +118,7 @@ const Navbar: React.FC = () => {
                 </div>
 
 
-                <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+                <ul className="hidden absolute top-1/2 le<RxCross1 size={20}/>ft-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
 
 
 
@@ -156,7 +169,8 @@ const Navbar: React.FC = () => {
 
                         : <NavLink to={"/signIn"} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200">Sign In</NavLink>
                 }
-                <a className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
+                <IoSettings size={25} onClick={handleSettings} className="text-white hover:cursor-pointer hover:text-gray-200" />
+
             </nav>
             <div className="navbar-menu relative z-50 hidden">
                 <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
@@ -203,6 +217,18 @@ const Navbar: React.FC = () => {
                     </div>
                 </nav>
             </div>
+
+            {
+                settings ? <div className='fixed  right-0 z-50'>
+                    <div className='h-screen bg-blue-400 py-10 px-5 w-80'>
+                        <div className='flex flex-col items-end'>
+                            <RxCross1 size={20} onClick={handleCloseSettings} className="text-white hover:cursor-pointer" />
+                        </div>
+                        <button>Dark Mode</button>
+                    </div>
+                </div> : ""
+            }
+
         </body>
     );
 };
