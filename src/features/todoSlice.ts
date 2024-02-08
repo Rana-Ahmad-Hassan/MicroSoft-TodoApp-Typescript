@@ -4,14 +4,16 @@ interface todo {
     data: string[]
     fav: string[]
     searchQuery: string,
-    login: Boolean
+    login: Boolean,
+    toggleTheme:Boolean
 }
 
 const initialState: todo = {
     data: [],
     fav: [],
     searchQuery: "",
-    login: false
+    login: false,
+    toggleTheme:false
 }
 
 export const todoSlice = createSlice({
@@ -42,10 +44,13 @@ export const todoSlice = createSlice({
         },
         handleLogOut:(state)=>{
             state.login= false;
+        },
+        handleToggleTheme:(state)=>{
+            state.toggleTheme= true
         }
     }
 })
 
-export const { addTodo, addFavTodo, handleSearch,handleLogin, handledelete, handleLogOut } = todoSlice.actions
+export const { addTodo, addFavTodo, handleSearch,handleLogin, handledelete, handleLogOut, handleToggleTheme } = todoSlice.actions
 
 export default todoSlice.reducer

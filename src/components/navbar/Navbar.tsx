@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { IoMdPerson } from "react-icons/io";
-import { handleLogOut } from '../../features/todoSlice';
+import { handleLogOut, handleToggleTheme } from '../../features/todoSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { IoSettings } from 'react-icons/io5';
 import { RxCross1 } from "react-icons/rx";
 
 
+
 interface statedata {
     todo: {
-        login: Boolean
+        login: Boolean,
+        toggleTheme:Boolean
+
     }
 }
 
@@ -20,6 +23,7 @@ const Navbar: React.FC = () => {
     const [settings, setSettings] = useState(false)
     const dispatch = useDispatch()
     const login = useSelector((state: statedata) => state.todo.login)
+    const toggleTheme = useSelector((state:statedata)=>state.todo.toggleTheme)
 
 
     const handleSettings = () => {
@@ -35,6 +39,10 @@ const Navbar: React.FC = () => {
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
+
+    const handleToogleDarkMode = () =>{
+        dispatch(handleToggleTheme())
+    }
     useEffect(() => {
         const handleMenu = () => {
             const menu = document.querySelectorAll('.navbar-menu');
@@ -170,8 +178,8 @@ const Navbar: React.FC = () => {
             </div>
 
             {
-                settings ? <div className='fixed top-24 pt-2 right-0 z-50 shadow-2xl'>
-                    <div className='h-screen bg-white py-10 px-5 w-96'>
+                settings ? <div className='fixed top-24 pt-1 right-0 z-50 shadow-2xl'>
+                    <div className={`h-screen ${toggleTheme ? "bg-black" : "bg-white"} py-10 px-5 w-96`}>
                         <div className='flex flex-col items-end'>
                             <RxCross1 size={20} onClick={handleCloseSettings} className="text-black hover:cursor-pointer" />
                         </div>
@@ -183,6 +191,7 @@ const Navbar: React.FC = () => {
                                     className="sr-only peer"
                                     checked={isChecked}
                                     onChange={handleChange}
+                                    onClick={handleToogleDarkMode}
                                 />
                                 <div className="w-11 h-6 bg-gray-200 rounded-full peer-focus:ring-4   dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  "></div>
 
