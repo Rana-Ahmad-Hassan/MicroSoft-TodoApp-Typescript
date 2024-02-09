@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { IoMdPerson } from "react-icons/io";
 import { handleLogOut, handleToggleTheme } from '../../features/todoSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
