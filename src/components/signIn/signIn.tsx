@@ -1,22 +1,16 @@
 import React, { FormEvent, useState } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { handleLogin } from '../../features/todoSlice';
 import { toast } from 'react-toastify';
 
 
-interface statedata {
-    todo: {
-        login: Boolean,
-        toggleTheme: Boolean
 
-    }
-}
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name , setName] = useState("")
     const dispatch = useDispatch()
-    const toggleTheme= useSelector((state:statedata)=>state.todo.toggleTheme)
+   
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();

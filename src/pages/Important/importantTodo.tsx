@@ -3,12 +3,12 @@ import { useSelector } from "react-redux"
 
 interface Favtodo {
   todo: {
-    fav: string[]
+    impTodo: string[]
   }
 }
 
 function ImportantTodo() {
-  const data = useSelector((state: Favtodo) => state.todo.fav)
+  const data = useSelector((state: Favtodo) => state.todo.impTodo)
   if (data) {
     console.log(data)
   }

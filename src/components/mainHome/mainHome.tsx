@@ -94,7 +94,7 @@ const MainHome: React.FC = () => {
 
                 {/* This is the div for the button for adding the todo */}
                 <div className="bg-white shadow-lg flex justify-end">
-                    <button onClick={handleAddTodo} className="px-5  bg-white hover:bg-gray-100 hover:rounded-lg py-2 border my-2 mx-1">Add</button>
+                    <button onClick={handleAddTodo} className="px-5  bg-blue-400 hover:bg-pink-500 hover:rounded-lg py-2 border my-2 mx-1">Add</button>
                 </div>
 
 
