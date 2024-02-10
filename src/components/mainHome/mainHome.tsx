@@ -104,7 +104,7 @@ const MainHome: React.FC = () => {
 
                     {data.map((item, i) => {
                         return (
-                            <div className="bg-sky-100 my-5 flex flex-wrap justify-between text-stone-700 shadow-lg p-4 " key={i}>
+                            <div className="bg-white border border-gray-200 my-5 flex flex-wrap justify-between text-stone-700 shadow-2xl p-4 " key={i}>
                                 <p className="flex flex-wrap">{item}</p>
 
                                 <div className="ml-auto flex flex-row items-center gap-2">

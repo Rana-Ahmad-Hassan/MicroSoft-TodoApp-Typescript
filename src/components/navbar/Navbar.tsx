@@ -123,8 +123,9 @@ const Navbar: React.FC = () => {
     return (
         <body className={`${toggleTheme ? "bg-[#1B1A19]": "bg-blue-500"} relative z-40`}>
             <nav className="relative px-10 py-2 flex justify-between items-center ">
+                <img src="https://res.cdn.office.net/todo/1602936_2.115.1/icons/todo_badge.png" width={30} alt="Logo" />
                 <a className="text-3xl font-bold leading-none" href="#">
-                    <p className='font-medium text-white text-[30px]'>To Do</p>
+                    <p className='font-medium text-white  text-[30px]'>To Do</p>
                 </a>
                 <div className="lg:hidden">
                     <button className="navbar-burger flex items-center text-white p-3">
