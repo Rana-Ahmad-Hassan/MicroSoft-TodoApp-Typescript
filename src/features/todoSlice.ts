@@ -2,18 +2,18 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface todo {
     data: string[]
-    fav: string[]
+    impTodo: string[]
     searchQuery: string,
     login: Boolean,
-    toggleTheme: Boolean
+    toggleTheme: any
 }
 
 const initialState: todo = {
     data: [],
-    fav: [],
+    impTodo: [],
     searchQuery: "",
     login: false,
-    toggleTheme: false
+    toggleTheme: null
 }
 
 export const todoSlice = createSlice({
@@ -25,7 +25,7 @@ export const todoSlice = createSlice({
 
         },
         addFavTodo: (state, action: PayloadAction<string>) => {
-            state.fav.push(action.payload)
+            state.impTodo.push(action.payload)
         },
         handleSearch: (state, action: PayloadAction<string>) => {
             state.searchQuery = action.payload
@@ -48,7 +48,7 @@ export const todoSlice = createSlice({
             state.login = false;
         },
         handleToggleTheme: (state) => {
-            state.toggleTheme = true
+            state.toggleTheme = !state.toggleTheme
         }
     }
 })

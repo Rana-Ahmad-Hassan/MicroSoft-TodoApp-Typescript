@@ -1,14 +1,22 @@
 import React, { FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { handleLogin } from '../../features/todoSlice';
 import { toast } from 'react-toastify';
 
+
+interface statedata {
+    todo: {
+        login: Boolean,
+        toggleTheme: Boolean
+
+    }
+}
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name , setName] = useState("")
     const dispatch = useDispatch()
-
+    const toggleTheme= useSelector((state:statedata)=>state.todo.toggleTheme)
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -29,8 +37,8 @@ const SignIn: React.FC = () => {
     };
 
     return (
-        <section>
-            <div className="flex flex-col items-center justify-center px-6 mx-auto mt-20  lg:py-0">
+        <section className=''>
+            <div className="flex flex-col  items-center justify-center px-6 mx-auto mt-20  lg:py-0">
 
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

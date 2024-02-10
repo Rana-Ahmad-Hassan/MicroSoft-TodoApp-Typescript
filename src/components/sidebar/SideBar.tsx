@@ -16,18 +16,17 @@ import { useSelector } from "react-redux";
 interface statedata {
     todo: {
         login: Boolean
+        toggleTheme:Boolean
+        impTodo: string[]
     }
 }
 
-interface Favtodo {
-    todo: {
-        fav: string[]
-    }
-}
+
 
 const SideBar: React.FC = () => {
-    const login = useSelector((state: statedata) => state.todo.login)
-    const impTodo = useSelector((state: Favtodo) => state.todo.fav)
+    const {login,impTodo,toggleTheme} = useSelector((state: statedata) => state.todo)
+  
+    
 
     // Array of side bar menues with multiple objects
     const menus = [
@@ -43,18 +42,15 @@ const SideBar: React.FC = () => {
 
 
         // This is the main section div of the sideBar
-        <section className="flex flex-col  relative  sideBar" style={{ overflowY: "scroll" }}>
+        <section className="flex flex-col    relative  sideBar" style={{ overflowY: "scroll" }}>
 
 
             {/* The second main div for wrapping the elements of sideBar */}
             <div
-                className={`h-screen absolute transition-all shadow-2xl  duration-500 text-gray-100 px-4 ${open ? "w-72" : "w-14"
-                    }`}
+                className={`h-screen absolute transition-all shadow-2xl ${toggleTheme?"bg-[#252423]":"bg-white"}  duration-500 text-gray-100 px-4 ${open ? "w-72" : "w-14"}`}
                 style={{
                     position: "fixed",
-
                     left: 0,
-                    backgroundColor: open ? 'white' : 'transparent',
                     backdropFilter: open ? 'blur(10px)' : 'none',
                 }}
             >
@@ -65,13 +61,13 @@ const SideBar: React.FC = () => {
                         <RxCross1
                             onClick={() => setOpen(!open)}
                             size={30}
-                            className="cursor-pointer text-black"
+                            className={`cursor-pointer ${toggleTheme?"text-white":"text-black"}`}
                         />
                     ) : (
                         <IoReorderThree
                             onClick={() => setOpen(!open)}
                             size={30}
-                            className="cursor-pointer text-black  "
+                            className={`cursor-pointer ${toggleTheme?"text-white":"text-black"}`}
                         />
                     )}
                 </div>
@@ -84,7 +80,7 @@ const SideBar: React.FC = () => {
                     {
                         login ? (
                             <div>
-                                <p className="text-black text-2xl pl-2">{localStorage.getItem("name")}</p>
+                                <p className="text-blue-500 text-2xl pl-2">{localStorage.getItem("name")}</p>
                             </div>
                         ) : ""
                     }
@@ -96,15 +92,15 @@ const SideBar: React.FC = () => {
                                 }`}
                         >
                             {open && (
-                                <div className="text-black">{React.createElement(menu?.icon, { size: "25" })}</div>
+                                <div className={`${toggleTheme?"text-white":"text-black"}`}>{React.createElement(menu?.icon, { size: "25" })}</div>
                             )}
 
                             <h2
-                                className={`transition-all text-1xl font-normal duration-500 whitespace-pre ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                                className={`transition-all text-1xl ${toggleTheme?"text-white":"text-black"} font-normal duration-500 whitespace-pre ${!open && "opacity-0 translate-x-28 overflow-hidden"
                                     }`}
                                 style={{
                                     transitionDelay: `${i + 3}00ms`,
-                                    color: "black"
+                                    
                                 }}
                             >
                                 {menu?.name}

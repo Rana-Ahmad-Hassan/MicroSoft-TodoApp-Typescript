@@ -73,7 +73,7 @@ const MainHome: React.FC = () => {
         <>
 
             {/* This is the main wrrapper div for this whole component */}
-            <div className="2xl:mx-5">
+            <div className="2xl:mx-5 ">
 
                 {/* this is the main content for the main home page */}
                 <div className="">

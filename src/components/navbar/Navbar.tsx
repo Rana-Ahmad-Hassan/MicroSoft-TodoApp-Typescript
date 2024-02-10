@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
 
     console.log(toggleTheme)
 
-    
+
     const handleSettings = () => {
         setSettings(true)
     }
@@ -121,8 +121,8 @@ const Navbar: React.FC = () => {
 
 
     return (
-        <body className="bg-blue-500 relative z-40">
-            <nav className="relative px-10 py-2 flex justify-between items-center bg-blue-600 ">
+        <body className={`${toggleTheme ? "bg-[#1B1A19]": "bg-blue-500"} relative z-40`}>
+            <nav className="relative px-10 py-2 flex justify-between items-center ">
                 <a className="text-3xl font-bold leading-none" href="#">
                     <p className='font-medium text-white text-[30px]'>To Do</p>
                 </a>
@@ -170,11 +170,11 @@ const Navbar: React.FC = () => {
                     <div className="mt-auto">
                         <div className="pt-6">
                             {
-                                login ? <button onClick={handleDeleteUser}  className="block px-4 py-3 mb-3  text-xs text-center font-semibold leading-none bg-gray-400 text-black hover:bg-gray-100 rounded-xl">logOut</button>
+                                login ? <button onClick={handleDeleteUser} className="block px-4 py-3 mb-3  text-xs text-center font-semibold leading-none bg-gray-400 text-black hover:bg-gray-100 rounded-xl">logOut</button>
 
-                                : <NavLink to={"/signIn"} className="block px-4 py-3 mb-3  text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl">Sign in</NavLink>
+                                    : <NavLink to={"/signIn"} className="block px-4 py-3 mb-3  text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl">Sign in</NavLink>
                             }
-                           
+
                         </div>
                         <p className="my-4 text-xs text-center text-gray-400">
                             <span>Copyright © 2021</span>
@@ -185,9 +185,9 @@ const Navbar: React.FC = () => {
 
             {
                 settings ? <div className='fixed top-24 pt-1 right-0 z-50 shadow-2xl'>
-                    <div className={`h-screen ${toggleTheme ? "bg-amber-500" : ""} py-10 px-5 w-96`}>
+                    <div className={`h-screen ${toggleTheme ? "bg-[#212121] text-white" : "bg-white"} py-10 px-5 w-96`}>
                         <div className='flex flex-col items-end'>
-                            <RxCross1 size={20} onClick={handleCloseSettings} className="text-black hover:cursor-pointer" />
+                            <RxCross1 size={20} onClick={handleCloseSettings} className={` ${toggleTheme? "text-white" :"text-black"} hover:cursor-pointer`} />
                         </div>
                         <div className='flex justify-between mt-10'>
                             <p className='  text-lg'>DARK MODE</p>
