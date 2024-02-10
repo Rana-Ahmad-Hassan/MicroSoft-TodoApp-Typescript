@@ -43,6 +43,8 @@ export const todoSlice = createSlice({
             const deleteItem = action.payload;
             const newData = state.data.filter((item) => item !== deleteItem)
             state.data = newData;
+            const impNewData = state.impTodo.filter((item)=>item!==deleteItem)
+            state.impTodo=impNewData
         },
         handleLogOut: (state) => {
             state.login = false;

@@ -35,6 +35,7 @@ const MainHome: React.FC = () => {
     const handleAddTodo = (e: FormEvent) => {
         e.preventDefault();
         dispatch(addTodo(todo))
+        setTodo("")
     }
 
     // here i am defining the function for adding the item for favourite in the global state in our feature folder
@@ -87,7 +88,7 @@ const MainHome: React.FC = () => {
 
                     <div className="bg-gray-100 mt-4  rounded border border-gray-200 px-2 flex items-center ">
                         <FaRegCircle className="text-blue-700" />
-                        <input type="text" onChange={(e) => setTodo(e.target.value)} placeholder="Ada a task" className="bg-transparent py-3 text-gray-600 px-4 focus:outline-none w-full" />
+                        <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} placeholder="Ada a task" className="bg-transparent py-3 text-gray-600 px-4 focus:outline-none w-full" />
                     </div>
                 </div>
 
