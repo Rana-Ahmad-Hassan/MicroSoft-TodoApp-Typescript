@@ -5,7 +5,7 @@ interface todo {
     fav: string[]
     searchQuery: string,
     login: Boolean,
-    toggleTheme:Boolean
+    toggleTheme: Boolean
 }
 
 const initialState: todo = {
@@ -13,7 +13,7 @@ const initialState: todo = {
     fav: [],
     searchQuery: "",
     login: false,
-    toggleTheme:false
+    toggleTheme: false
 }
 
 export const todoSlice = createSlice({
@@ -32,27 +32,27 @@ export const todoSlice = createSlice({
             const filterData = state.data.filter((item) => item.includes(state.searchQuery))
             if (filterData) {
                 state.data = filterData
-            }else{
+            } else {
                 alert("Particular todo does not exist")
             }
         },
         handleLogin: (state) => {
             state.login = true
         },
-        handledelete:(state,action: PayloadAction<string>)=>{
-            const deleteItem= action.payload;
-            const newData = state.data.filter((item)=>item!==deleteItem)
-            state.data= newData;
+        handledelete: (state, action: PayloadAction<string>) => {
+            const deleteItem = action.payload;
+            const newData = state.data.filter((item) => item !== deleteItem)
+            state.data = newData;
         },
-        handleLogOut:(state)=>{
-            state.login= false;
+        handleLogOut: (state) => {
+            state.login = false;
         },
-        handleToggleTheme:(state)=>{
-            state.toggleTheme= true
+        handleToggleTheme: (state) => {
+            state.toggleTheme = true
         }
     }
 })
 
-export const { addTodo, addFavTodo, handleSearch,handleLogin, handledelete, handleLogOut, handleToggleTheme } = todoSlice.actions
+export const { addTodo, addFavTodo, handleSearch, handleLogin, handledelete, handleLogOut, handleToggleTheme } = todoSlice.actions
 
 export default todoSlice.reducer

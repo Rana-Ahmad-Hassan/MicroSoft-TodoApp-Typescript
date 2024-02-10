@@ -24,7 +24,9 @@ const Navbar: React.FC = () => {
     const login = useSelector((state: statedata) => state.todo.login)
     const toggleTheme = useSelector((state: statedata) => state.todo.toggleTheme)
 
+    console.log(toggleTheme)
 
+    
     const handleSettings = () => {
         setSettings(true)
     }
@@ -183,7 +185,7 @@ const Navbar: React.FC = () => {
 
             {
                 settings ? <div className='fixed top-24 pt-1 right-0 z-50 shadow-2xl'>
-                    <div className={`h-screen ${toggleTheme ? "bg-black" : "bg-white"} py-10 px-5 w-96`}>
+                    <div className={`h-screen ${toggleTheme ? "bg-amber-500" : ""} py-10 px-5 w-96`}>
                         <div className='flex flex-col items-end'>
                             <RxCross1 size={20} onClick={handleCloseSettings} className="text-black hover:cursor-pointer" />
                         </div>
