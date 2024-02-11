@@ -1,5 +1,5 @@
 import { MdOutlineRadioButtonUnchecked, MdOutlineWbSunny, MdRadioButtonChecked } from "react-icons/md";
-import { FaRegCircle } from "react-icons/fa6";
+import { IoMdAdd } from "react-icons/io";
 import { FaRegStar } from "react-icons/fa";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -106,7 +106,8 @@ const MainHome: React.FC = () => {
                 <div>
 
                     <div className="bg-gray-100 mt-4  rounded border border-gray-200 px-2 flex items-center ">
-                        <FaRegCircle className="text-blue-700" />
+                    <IoMdAdd className="text-blue-500" size={25}/>
+
                         <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} placeholder="Ada a task" className="bg-transparent py-3 text-gray-600 px-4 focus:outline-none w-full" />
                     </div>
                 </div>
