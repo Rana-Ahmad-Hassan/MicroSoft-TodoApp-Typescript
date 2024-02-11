@@ -1,7 +1,6 @@
 import { MdOutlineRadioButtonUnchecked, MdOutlineWbSunny, MdRadioButtonChecked } from "react-icons/md";
 import { FaRegCircle } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
-import { GoStarFill } from "react-icons/go";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, addFavTodo, handledelete } from "../../features/todoSlice";
@@ -24,11 +23,10 @@ interface statedata {
 const MainHome: React.FC = () => {
 
     const [todo, setTodo] = useState("")
-    const [favStar, setFavStar] = useState(false)
     const [checked, setChecked] = useState<{ [key: string]: boolean }>({});
     const dispatch = useDispatch()
     const data = useSelector((state: statedata) => state.todo.data)
-
+    const audioURL = 'https://res.cdn.office.net/todo/1602936_2.115.1/sounds/complete.wav'
 
 
 
@@ -43,7 +41,7 @@ const MainHome: React.FC = () => {
     // here i am defining the function for adding the item for favourite in the global state in our feature folder
     const handleFavourite = (item: string) => {
         dispatch(addFavTodo(item))
-        setFavStar(true)
+
         toast.success("Important Todo add successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -74,6 +72,8 @@ const MainHome: React.FC = () => {
             ...prevState,
             [item]: !prevState[item]
         }));
+        const audio = new Audio(audioURL)
+        audio.play().catch(error => console.log("error while playong the audio", error))
     };
 
 
@@ -137,7 +137,7 @@ const MainHome: React.FC = () => {
                                 <p className={`flex ${checked[item] ? "line-through" : ""} flex-wrap px-2`}>{item}</p>
 
                                 <div className="ml-auto flex flex-row items-center gap-2">
-                                    <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar ? <GoStarFill /> : "text-blue-600"}   `} />
+                                    <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer text-blue-500   `} />
                                     <MdDelete size={20} onClick={() => handleDelete(item)} className="text-red-500 hover:cursor-pointer" />
                                 </div>
                             </div>
