@@ -34,8 +34,14 @@ const MainHome: React.FC = () => {
     // define the fuction here to just add todo to the global state in our freature component
     const handleAddTodo = (e: FormEvent) => {
         e.preventDefault();
-        dispatch(addTodo(todo))
-        setTodo("")
+        if (!todo) {
+            alert("Please add something to do.")
+        } else {
+            dispatch(addTodo(todo))
+            setTodo("")
+        }
+
+
     }
 
     // here i am defining the function for adding the item for favourite in the global state in our feature folder

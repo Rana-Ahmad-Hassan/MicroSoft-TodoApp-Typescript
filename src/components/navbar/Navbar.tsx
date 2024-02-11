@@ -133,7 +133,7 @@ const Navbar: React.FC = () => {
     return (
         <body className={`${toggleTheme ? "bg-[#1B1A19]" : "bg-blue-500"} relative z-40`}>
             <nav className="relative px-10 py-2 flex justify-between items-center ">
-                <img src="https://res.cdn.office.net/todo/1602936_2.115.1/icons/todo_badge.png" width={30} alt="Logo" />
+                <img src="https://res.cdn.office.net/todo/1602936_2.115.1/icons/todo_badge.png" width={30} alt="/Logo" />
                 <a className="text-3xl font-bold leading-none" href="#">
                     <p className='font-medium text-white  text-[30px]'>To Do</p>
                 </a>
@@ -197,7 +197,7 @@ const Navbar: React.FC = () => {
             </div>
 
             {
-                settings ? <div className='fixed top-24 pt-5 right-0 z-50 shadow-2xl'>
+                settings ? <div className='fixed top-24 pt-3 right-0 z-50 shadow-2xl'>
                     <div className={`h-screen ${toggleTheme ? "bg-[#212121] text-white" : "bg-white"} py-10 px-5 w-96`}>
                         <div className='flex flex-col items-end'>
                             <RxCross1 size={20} onClick={handleCloseSettings} className={` ${toggleTheme ? "text-white" : "text-black"} hover:cursor-pointer`} />
@@ -223,7 +223,7 @@ const Navbar: React.FC = () => {
 
 
             {
-                handleNew ? <div className='fixed top-24 pt-5 right-0 z-50 shadow-2xl'>
+                handleNew ? <div className='fixed top-24 pt-3 right-0 z-50 shadow-2xl'>
                     <div className={`h-screen ${toggleTheme ? "bg-[#212121] text-white" : "bg-white"} py-10 px-5 w-96`}>
 
                         <div className='flex flex-wrap justify-between'>
@@ -236,7 +236,7 @@ const Navbar: React.FC = () => {
                                     <img className="rounded-t-lg" src="https://i.ytimg.com/vi/9LZGB3OLXNQ/maxresdefault.jpg" alt="feature Photo" />
                                 </a>
                                 <div className="p-5">
-                                   
+
                                     <p className="mb-3 font-normal text-white text-2xl">Now you can change to Dark Mode theme from the settings</p>
                                     <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         Read more
