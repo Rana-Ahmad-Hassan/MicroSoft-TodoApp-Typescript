@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { IoSettings } from 'react-icons/io5';
 import { RxCross1 } from "react-icons/rx";
+import { MdOutlineCreateNewFolder } from 'react-icons/md';
 
 
 
@@ -20,6 +21,7 @@ interface statedata {
 
 const Navbar: React.FC = () => {
     const [settings, setSettings] = useState(false)
+    const [handleNew, setHandleNew] = useState(false)
     const dispatch = useDispatch()
     const login = useSelector((state: statedata) => state.todo.login)
     const toggleTheme = useSelector((state: statedata) => state.todo.toggleTheme)
@@ -29,6 +31,14 @@ const Navbar: React.FC = () => {
 
     const handleSettings = () => {
         setSettings(true)
+    }
+
+    const handleNewFeatures = () => {
+        setHandleNew(true)
+    }
+
+    const handleCloseNewFeatures = () => {
+        setHandleNew(false)
     }
 
     const handleCloseSettings = () => {
@@ -121,7 +131,7 @@ const Navbar: React.FC = () => {
 
 
     return (
-        <body className={`${toggleTheme ? "bg-[#1B1A19]": "bg-blue-500"} relative z-40`}>
+        <body className={`${toggleTheme ? "bg-[#1B1A19]" : "bg-blue-500"} relative z-40`}>
             <nav className="relative px-10 py-2 flex justify-between items-center ">
                 <img src="https://res.cdn.office.net/todo/1602936_2.115.1/icons/todo_badge.png" width={30} alt="Logo" />
                 <a className="text-3xl font-bold leading-none" href="#">
@@ -152,6 +162,8 @@ const Navbar: React.FC = () => {
                         : <NavLink to={"/signIn"} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200">Sign In</NavLink>
                 }
                 <IoSettings size={25} onClick={handleSettings} className="text-white hover:cursor-pointer hover:text-gray-200" />
+
+                <MdOutlineCreateNewFolder size={40} onClick={handleNewFeatures} className="text-white hover:cursor-pointer pl-3 hover:text-gray-200" />
 
             </nav>
             <div className="navbar-menu relative z-50 hidden">
@@ -185,10 +197,10 @@ const Navbar: React.FC = () => {
             </div>
 
             {
-                settings ? <div className='fixed top-24 pt-1 right-0 z-50 shadow-2xl'>
+                settings ? <div className='fixed top-24 pt-5 right-0 z-50 shadow-2xl'>
                     <div className={`h-screen ${toggleTheme ? "bg-[#212121] text-white" : "bg-white"} py-10 px-5 w-96`}>
                         <div className='flex flex-col items-end'>
-                            <RxCross1 size={20} onClick={handleCloseSettings} className={` ${toggleTheme? "text-white" :"text-black"} hover:cursor-pointer`} />
+                            <RxCross1 size={20} onClick={handleCloseSettings} className={` ${toggleTheme ? "text-white" : "text-black"} hover:cursor-pointer`} />
                         </div>
                         <div className='flex justify-between mt-10'>
                             <p className='  text-lg'>DARK MODE</p>
@@ -204,6 +216,37 @@ const Navbar: React.FC = () => {
 
 
                             </label>
+                        </div>
+                    </div>
+                </div> : ""
+            }
+
+
+            {
+                handleNew ? <div className='fixed top-24 pt-5 right-0 z-50 shadow-2xl'>
+                    <div className={`h-screen ${toggleTheme ? "bg-[#212121] text-white" : "bg-white"} py-10 px-5 w-96`}>
+
+                        <div className='flex flex-wrap justify-between'>
+                            <p className='font-bold text-xl'>Whats New</p>
+                            <RxCross1 size={20} onClick={handleCloseNewFeatures} className={` ${toggleTheme ? "text-white" : "text-black"} hover:cursor-pointer`} />
+                        </div>
+                        <div className='mt-10'>
+                            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <img className="rounded-t-lg" src="https://i.ytimg.com/vi/9LZGB3OLXNQ/maxresdefault.jpg" alt="feature Photo" />
+                                </a>
+                                <div className="p-5">
+                                   
+                                    <p className="mb-3 font-normal text-white text-2xl">Now you can change to Dark Mode theme from the settings</p>
+                                    <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Read more
+                                        <svg className="rtl:rotate-180 w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div> : ""

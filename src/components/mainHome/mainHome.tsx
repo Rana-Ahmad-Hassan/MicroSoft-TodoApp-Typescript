@@ -135,8 +135,8 @@ const MainHome: React.FC = () => {
 
 
 
-                                <p className={`flex ${checked[item] ? "line-through" : ""} flex-wrap px-2`}>{item}</p>
-
+                                <p className={`flex ${checked[item] ? "line-through" : ""} flex-wrap px-2`}>{item}  </p>
+                                <span>{checked[item] ? <p>completed</p> :""}</span>
                                 <div className="ml-auto flex flex-row items-center gap-2">
                                     <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer text-blue-500   `} />
                                     <MdDelete size={20} onClick={() => handleDelete(item)} className="text-red-500 hover:cursor-pointer" />
