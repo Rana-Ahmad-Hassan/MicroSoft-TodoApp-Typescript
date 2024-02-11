@@ -19,11 +19,11 @@ const Routes: React.FC = () => {
 
         <div className="grid grid-cols-12">
           <div className="
-       col-span-2">
+       col-span-1">
             <SideBar />
           </div>
 
-          <div className="col-span-10 mt-7">
+          <div className="col-span-11 mt-7">
             <ReactRoutes>
 
               <Route path="/signIn" element={<SignInPage />}></Route>

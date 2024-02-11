@@ -16,6 +16,7 @@ function ImportantTodo() {
     <>
 
       <div className="2xl:mx-5">
+        <div className="w-full underline"></div>
         <div className="flex gap-5 mb-10 flex-wrap items-center">
           <FaRegStar size={25} className='text-blue-600' />
           <p className="text-2xl font-lg text-blue-600">IMPORTANT...</p>

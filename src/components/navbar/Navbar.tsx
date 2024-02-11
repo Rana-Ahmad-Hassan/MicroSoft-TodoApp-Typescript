@@ -203,7 +203,8 @@ const Navbar: React.FC = () => {
                             <RxCross1 size={20} onClick={handleCloseSettings} className={` ${toggleTheme ? "text-white" : "text-black"} hover:cursor-pointer`} />
                         </div>
                         <div className='flex justify-between mt-10'>
-                            <p className='  text-lg'>DARK MODE</p>
+                            <p className='  text-lg'>DARK MODE {toggleTheme ? <span className='text-sm text-green-500 underline'>Enabled</span> : ""}</p>
+
                             <label className="relative inline-flex items-center me-5 cursor-pointer">
                                 <input
                                     type="checkbox"
