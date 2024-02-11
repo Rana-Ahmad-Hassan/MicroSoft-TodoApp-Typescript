@@ -106,7 +106,7 @@ const MainHome: React.FC = () => {
                 <div>
 
                     <div className="bg-gray-100 mt-4  rounded border border-gray-200 px-2 flex items-center ">
-                    <IoMdAdd className="text-blue-500" size={25}/>
+                        <IoMdAdd className="text-blue-500" size={25} />
 
                         <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} placeholder="Ada a task" className="bg-transparent py-3 text-gray-600 px-4 focus:outline-none w-full" />
                     </div>
@@ -136,7 +136,7 @@ const MainHome: React.FC = () => {
 
 
                                 <p className={`flex ${checked[item] ? "line-through" : ""} flex-wrap px-2`}>{item}  </p>
-                                <span>{checked[item] ? <p>completed</p> :""}</span>
+                                <span>{checked[item] ? <p className="text-green-600 font-bold">completed</p> : ""}</span>
                                 <div className="ml-auto flex flex-row items-center gap-2">
                                     <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer text-blue-500   `} />
                                     <MdDelete size={20} onClick={() => handleDelete(item)} className="text-red-500 hover:cursor-pointer" />
