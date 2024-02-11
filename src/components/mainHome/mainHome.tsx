@@ -1,4 +1,4 @@
-import { MdOutlineWbSunny } from "react-icons/md";
+import { MdOutlineRadioButtonUnchecked, MdOutlineWbSunny, MdRadioButtonChecked } from "react-icons/md";
 import { FaRegCircle } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
 import { GoStarFill } from "react-icons/go";
@@ -12,7 +12,8 @@ import { toast } from 'react-toastify';
 
 interface statedata {
     todo: {
-        data: string[]    }
+        data: string[]
+    }
 }
 
 
@@ -24,6 +25,7 @@ const MainHome: React.FC = () => {
 
     const [todo, setTodo] = useState("")
     const [favStar, setFavStar] = useState(false)
+    const [checked, setChecked] = useState<{ [key: string]: boolean }>({});
     const dispatch = useDispatch()
     const data = useSelector((state: statedata) => state.todo.data)
 
@@ -42,10 +44,19 @@ const MainHome: React.FC = () => {
     const handleFavourite = (item: string) => {
         dispatch(addFavTodo(item))
         setFavStar(true)
+        toast.success("Important Todo add successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
 
-    const handleDelete = (item:string)=>{
+    const handleDelete = (item: string) => {
         dispatch(handledelete(item))
         toast.success("Todo deleted successfully!", {
             position: "top-right",
@@ -55,8 +66,16 @@ const MainHome: React.FC = () => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-          });
+        });
     }
+
+    const handleToggleChecked = (item: string) => {
+        setChecked(prevState => ({
+            ...prevState,
+            [item]: !prevState[item]
+        }));
+    };
+
 
     // here i define the array of days and months for getting them as original days and month
 
@@ -105,12 +124,21 @@ const MainHome: React.FC = () => {
 
                     {data.map((item, i) => {
                         return (
-                            <div className="bg-white border border-gray-200 my-5 flex flex-wrap justify-between text-stone-700 shadow-2xl p-4 " key={i}>
-                                <p className="flex flex-wrap">{item}</p>
+                            <div className="bg-white border border-gray-200 my-5 flex flex-wrap items-center justify-between text-stone-700 shadow-2xl p-4 " key={i}>
+                                {checked[item] ? (
+                                    <MdRadioButtonChecked onClick={() => handleToggleChecked(item)} />
+                                ) : (
+                                    <MdOutlineRadioButtonUnchecked onClick={() => handleToggleChecked(item)} />
+                                )}
+
+
+
+
+                                <p className={`flex ${checked[item] ? "line-through" : ""} flex-wrap px-2`}>{item}</p>
 
                                 <div className="ml-auto flex flex-row items-center gap-2">
-                                <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar ? <GoStarFill /> : "text-blue-600"}   `} />
-                                <MdDelete size={20} onClick={()=>handleDelete(item)} className="text-red-500 hover:cursor-pointer"/>
+                                    <FaRegStar onClick={() => handleFavourite(item)} size={20} className={`cursor-pointer ${favStar ? <GoStarFill /> : "text-blue-600"}   `} />
+                                    <MdDelete size={20} onClick={() => handleDelete(item)} className="text-red-500 hover:cursor-pointer" />
                                 </div>
                             </div>
                         )
